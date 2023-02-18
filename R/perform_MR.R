@@ -45,6 +45,7 @@ perform_MR <- function(data,path="",save_name="exposure_outcome",
 
         res_single <- TwoSampleMR::mr_singlesnp(data)
         p4 <- TwoSampleMR::mr_forest_plot(res_single)
+        print(p4)
         dev.off()
 
     }
