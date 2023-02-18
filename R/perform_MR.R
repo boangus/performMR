@@ -43,6 +43,8 @@ perform_MR <- function(data,path="",save_name="exposure_outcome",
         p3 <- TwoSampleMR::mr_leaveoneout_plot(leaveoneout_results = TwoSampleMR::mr_leaveoneout(data))
         print(p3)
 
+        res_single <- TwoSampleMR::mr_singlesnp(data)
+        p4 <- TwoSampleMR::mr_forest_plot(res_single)
         dev.off()
 
     }

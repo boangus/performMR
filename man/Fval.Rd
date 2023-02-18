@@ -10,7 +10,8 @@ Fval(
   beta = "beta.exposure",
   se = "se.exposure",
   N = "samplesize.exposure",
-  path = "Fval.csv"
+  path = "",
+  filename = "Fval.csv"
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ Fval(
 \item{N}{samplesize col}
 
 \item{path}{the way you save the expose data}
+
+\item{filename}{the name you save the expose data}
 }
 \value{
 the total F value, and a file of the expose data which includ the F value respectively
