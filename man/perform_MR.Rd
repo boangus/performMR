@@ -10,7 +10,8 @@ perform_MR(
   save_name = "exposure_outcome",
   phenoscanner = F,
   MR_CSV = T,
-  MR_PIC = T
+  MR_PIC = T,
+  method = c("mr_ivw", "mr_egger_regression", "mr_weighted_median")
 )
 }
 \arguments{

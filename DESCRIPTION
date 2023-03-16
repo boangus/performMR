@@ -15,3 +15,5 @@ Imports:
     phenoscanner,
     TwoSampleMR,
     utils
+Depends: 
+    tidyverse

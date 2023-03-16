@@ -13,7 +13,7 @@
 #' @export perform_MR
 
 perform_MR <- function(data,path="",save_name="exposure_outcome",
-                       phenoscanner=F,MR_CSV=T,MR_PIC=T){
+                       phenoscanner=F,MR_CSV=T,MR_PIC=T,method =  c("mr_ivw","mr_egger_regression","mr_weighted_median")){
     if(phenoscanner){
         res <- phenoscanner::phenoscanner(snpquery=data$SNP)
         write.csv(res$results,paste(path,"PS_",save_name,".csv",sep = ""))
@@ -21,7 +21,7 @@ perform_MR <- function(data,path="",save_name="exposure_outcome",
 
 
     if(MR_CSV){
-        TwoSampleMR::generate_odds_ratios(mr_res = TwoSampleMR::mr(data)) |>
+        TwoSampleMR::generate_odds_ratios(mr_res = TwoSampleMR::mr(data,method_list=method)) |>
             write.csv(paste(path,"MR_",save_name,".csv",sep = ""))
 
         TwoSampleMR::mr_pleiotropy_test(data) |>
@@ -34,7 +34,7 @@ perform_MR <- function(data,path="",save_name="exposure_outcome",
     if(MR_PIC){
         pdf(paste(path,"PIC_",save_name,".pdf",sep = ""))
 
-        p1<- TwoSampleMR::mr_scatter_plot(mr_results = TwoSampleMR::mr(data,method_list =  c("mr_ivw","mr_egger_regression","mr_weighted_median")),data)
+        p1<- TwoSampleMR::mr_scatter_plot(mr_results = TwoSampleMR::mr(data,method_list=method),data)
         print(p1)
 
         p2 <- TwoSampleMR::mr_funnel_plot(singlesnp_results = TwoSampleMR::mr_singlesnp(data))
