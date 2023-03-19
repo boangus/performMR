@@ -2,7 +2,8 @@
 
 export("%>%")
 export(Fval)
-export(finn)
+export(finn_expose)
+export(finn_outcome)
 export(perform_MR)
 importFrom(grDevices,dev.off)
 importFrom(grDevices,pdf)
